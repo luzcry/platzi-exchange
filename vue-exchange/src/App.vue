@@ -5,7 +5,6 @@
   </main>
 </template>
 
-
 <script>
 import PxHeader from "@/components/PxHeader";
 

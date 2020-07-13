@@ -14,13 +14,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr
+        v-for="a in assets"
+        v-bind:key="a.id"
+        class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
+      >
+        <td>
+          <img
+            class="h-6 w-6"
+            :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`"
+            :alt="a.name"
+          />
+        </td>
+        <td>
+          <b># {{ a.rank }}</b>
+        </td>
+        <td>{{ a.name }}</td>
+        <td>{{ a.priceUsd | dollar}}</td>
+        <td>{{ a.marketCapUsd | dollar}}</td>
+        <td :class="a.changePercent24Hr.includes('-') ? 'text-red-600' : 'text-green-600'" >
+         
+          {{ a.changePercent24Hr | percent }}
+        </td>
         <td class="hidden sm:block"></td>
       </tr>
     </tbody>
@@ -72,4 +87,3 @@ th {
   }
 }
 </style>
-             
